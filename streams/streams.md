@@ -461,6 +461,21 @@ public class Main {
 }
 ```
 
+```java
+// Sort by salary in reverse (descending) order
+Optional<Employee> thirdHighestPaidEmp = empList.stream()
+    .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
+    // 2. Skip the first 2 highest employees
+    .skip(2)
+    // 3. Pick the first one available after skipping
+    .findFirst();
+
+if (thirdHighestPaidEmp.isPresent()) {
+    System.out.println("Third Highest Paid Employee: " + thirdHighestPaidEmp.get());
+} else {
+    System.out.println("Fewer than 3 employees present.");
+}
+```
 ---
 
 ## 8. High-Frequency Interview Questions & Common Pitfalls
